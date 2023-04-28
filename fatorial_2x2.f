@@ -1,5 +1,5 @@
 C     -----------------------------------------------------------------
-C     Programa Fatorial.
+C     Programa Fatorial
 C     Versao Beta (17/11/2008)
 C     Autor: Pojucan, M.M.S.
 C     Licenca:
