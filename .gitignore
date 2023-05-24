@@ -1,0 +1,5 @@
+# Ignorando os arquivos executáveis: 
+*.out
+
+# Ignorando a sincronização do FreeFileSync:
+*.sync.ffs_db
