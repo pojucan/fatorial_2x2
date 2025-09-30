@@ -1,5 +1,5 @@
-# Ignorando os arquivos executáveis: 
-*.out
+# Arquivos executáveis: 
+fatorial_2x2
 
-# Ignorando a sincronização do FreeFileSync:
+# Sincronização do FreeFileSync:
 *.sync.ffs_db
