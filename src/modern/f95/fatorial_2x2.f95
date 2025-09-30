@@ -1,7 +1,7 @@
 PROGRAM planejamento_fatorial_2x2
   IMPLICIT NONE
   
-  ! Declaração de variáveis
+  ! Declaração de variáveis:
   INTEGER, PARAMETER :: n_fatores = 2
   INTEGER, PARAMETER :: n_niveis = 2
   INTEGER, PARAMETER :: n_ensaios = 4
@@ -12,27 +12,27 @@ PROGRAM planejamento_fatorial_2x2
   REAL :: media_geral
   CHARACTER(LEN=20) :: nomes_fatores(n_fatores)
   
-  ! Matriz do planejamento fatorial 2²
+  ! Matriz do planejamento fatorial 2²:
   INTEGER, DIMENSION(n_ensaios, n_fatores) :: planejamento
   
-  ! Inicialização do planejamento (níveis codificados: -1 = baixo, +1 = alto)
+  ! Inicialização do planejamento (níveis codificados: -1 = baixo, +1 = alto):
   DATA planejamento / &
     -1, -1, &  ! Ensaio 1: A baixo, B baixo
     +1, -1, &  ! Ensaio 2: A alto, B baixo
     -1, +1, &  ! Ensaio 3: A baixo, B alto
     +1, +1 /   ! Ensaio 4: A alto, B alto
   
-  ! Nomes dos fatores
+  ! Nomes dos fatores:
   nomes_fatores(1) = "Fator A"
   nomes_fatores(2) = "Fator B"
   
-  ! Cabeçalho
+  ! Cabeçalho:
   PRINT *, "=========================================="
   PRINT *, "   PLANEJAMENTO FATORIAL 2²"
   PRINT *, "=========================================="
   PRINT *, ""
   
-  ! Exibir matriz do planejamento
+  ! Exibir matriz do planejamento:
   PRINT *, "MATRIZ DO PLANEJAMENTO:"
   PRINT *, "Ensaio   Fator A   Fator B"
   PRINT *, "------   -------   -------"
@@ -45,7 +45,7 @@ PROGRAM planejamento_fatorial_2x2
   PRINT *, "Onde: -1 = Nível Baixo, +1 = Nível Alto"
   PRINT *, ""
   
-  ! Entrada das respostas
+  ! Entrada das respostas:
   PRINT *, "DIGITE AS RESPOSTAS PARA CADA ENSAIO:"
   DO i = 1, n_ensaios
     WRITE(*, '(A, I1, A)') "Resposta para o ensaio ", i, ": "
@@ -58,12 +58,12 @@ PROGRAM planejamento_fatorial_2x2
   PRINT *, "=========================================="
   PRINT *, ""
   
-  ! Cálculo da média geral
+  ! Cálculo da média geral:
   media_geral = SUM(respostas) / REAL(n_ensaios)
   WRITE(*, '(A, F10.4)') "Média geral: ", media_geral
   PRINT *, ""
   
-  ! Cálculo dos efeitos principais
+  ! Cálculo dos efeitos principais:
   DO j = 1, n_fatores
     efeitos(j) = 0.0
     DO i = 1, n_ensaios
@@ -75,7 +75,7 @@ PROGRAM planejamento_fatorial_2x2
   
   PRINT *, ""
   
-  ! Cálculo do efeito de interação A×B
+  ! Cálculo do efeito de interação A×B: 
   interacao = 0.0
   DO i = 1, n_ensaios
     interacao = interacao + (planejamento(i,1) * planejamento(i,2)) * respostas(i)
@@ -89,7 +89,7 @@ PROGRAM planejamento_fatorial_2x2
   PRINT *, "=========================================="
   PRINT *, ""
   
-  ! Interpretação dos resultados
+  ! Interpretação dos resultados: 
   DO j = 1, n_fatores
     IF (efeitos(j) > 0.0) THEN
       WRITE(*, '(A, A, A)') TRIM(nomes_fatores(j)), ": Efeito POSITIVO ", &
